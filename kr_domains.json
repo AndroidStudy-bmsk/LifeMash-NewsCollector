@@ -1,0 +1,84 @@
+{
+  "business": [
+    "hankyung.com",
+    "mk.co.kr",
+    "sedaily.com",
+    "biz.chosun.com",
+    "businesspost.co.kr",
+    "economist.co.kr",
+    "fnnews.com",
+    "etoday.co.kr",
+    "edaily.co.kr"
+  ],
+  "entertainment": [
+    "star.yonhapnews.co.kr",
+    "tenasia.hankyung.com",
+    "osen.mt.co.kr",
+    "sports.chosun.com/entertainment",
+    "xportsnews.com",
+    "sports.khan.co.kr/entertainment",
+    "joynews.inews24.com",
+    "news.jtbc.co.kr/entertainment"
+  ],
+  "general": [
+    "chosun.com",
+    "donga.com",
+    "hani.co.kr",
+    "hankookilbo.com",
+    "joongang.co.kr",
+    "khan.co.kr",
+    "news1.kr",
+    "yna.co.kr",
+    "kmib.co.kr",
+    "munhwa.com",
+    "segye.com",
+    "mbn.co.kr",
+    "news.kbs.co.kr",
+    "imnews.imbc.com",
+    "news.sbs.co.kr",
+    "jtbc.co.kr"
+  ],
+  "health": [
+    "junsang.or.kr",
+    "health.chosun.com",
+    "kormedi.com",
+    "healthinnews.co.kr",
+    "docdocdoc.co.kr",
+    "medipana.com",
+    "medigatenews.com",
+    "medifonews.com"
+  ],
+  "science": [
+    "dongascience.com",
+    "sciencetimes.co.kr",
+    "hellodd.com",
+    "scienceon.kisti.re.kr",
+    "m.newspim.com/science",
+    "sisain.co.kr/science",
+    "naeil.com/science"
+  ],
+  "sports": [
+    "sports.chosun.com",
+    "sports.donga.com",
+    "sportsseoul.com",
+    "xportsnews.com",
+    "sportalkorea.com",
+    "sports.khan.co.kr",
+    "sports.hankooki.com",
+    "interfootball.heraldcorp.com",
+    "news.sbs.co.kr/sports",
+    "mbcsportsplus.com"
+  ],
+  "technology": [
+    "bloter.net",
+    "it.chosun.com",
+    "zdnet.co.kr",
+    "betanews.net",
+    "ddaily.co.kr",
+    "digitaltoday.co.kr",
+    "itworld.co.kr",
+    "byline.network",
+    "techm.kr",
+    "tech42.co.kr"
+  ]
+}

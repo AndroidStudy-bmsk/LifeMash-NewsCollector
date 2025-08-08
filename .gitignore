@@ -144,4 +144,4 @@ cython_debug/
 *.sqlite3
 news.db
 API_KEY.txt
-kr_domains.json
+lifemash-service-account.json
