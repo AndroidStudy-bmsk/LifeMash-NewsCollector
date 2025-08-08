@@ -8,5 +8,8 @@ version = "0.1.0"
 description = "NewsAPI collector"
 requires-python = ">=3.9"
 
+[project.scripts]
+news-collector = "news_collector.cli:main"
+
 [tool.setuptools]
 packages = ["news_collector"]

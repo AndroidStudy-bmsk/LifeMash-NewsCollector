@@ -14,17 +14,18 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--since-hours", type=int, default=None)
     p.add_argument("--limit", type=int)
     p.add_argument("--out")
-    p.add_argument("--api-key")
     p.add_argument("--debug", action="store_true")
     p.add_argument("--domains-file", help="category->domains JSON. If set, use /v2/everything with languages.")
     p.add_argument("--languages", default="ko,en", help="comma-separated (e.g., ko,en)")
     return p.parse_args()
 
 
-def run_once(args) -> None:
+def main() -> None:
+    args = parse_args()
     invalid = [c for c in args.categories if c not in NEWSAPI_CATEGORIES]
     if invalid: raise ValueError(f"invalid category: {', '.join(invalid)}")
-    api_key = args.api_key or os.getenv("NEWSAPI_KEY")
+    api_key = os.getenv("NEWSAPI_KEY")
+    if not api_key: raise ValueError("NEWSAPI_KEY environment variable not set")
     if args.domains_file:
         langs: List[str] = [s.strip() for s in args.languages.split(",") if s.strip()]
         result = collect_categories_domains_mode(
@@ -55,5 +56,4 @@ def run_once(args) -> None:
 
 
 if __name__ == "__main__":
-    args = parse_args()
-    run_once(args)
+    main()
