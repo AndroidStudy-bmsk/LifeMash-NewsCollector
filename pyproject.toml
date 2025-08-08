@@ -7,9 +7,22 @@ name = "news_collector"
 version = "0.1.0"
 description = "NewsAPI collector"
 requires-python = ">=3.9"
+dependencies = [
+  "requests",
+  "tqdm",
+  "python-dateutil",
+  "firebase-admin"
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest",
+  "responses"
+]
 
 [project.scripts]
 news-collector = "news_collector.cli:main"
 
-[tool.setuptools]
-packages = ["news_collector"]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["news_collector*"]
