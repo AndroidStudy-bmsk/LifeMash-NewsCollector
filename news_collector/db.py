@@ -1,6 +1,9 @@
 from __future__ import annotations
-import json, sqlite3
+
+import json
+import sqlite3
 from typing import Dict, Optional
+
 from .constants import DB_PATH
 
 
@@ -26,7 +29,8 @@ def connect_db(path: str = DB_PATH) -> sqlite3.Connection:
 
 def _merge_categories(old_csv: Optional[str], new_cat: Optional[str]) -> str:
     s = set(c.strip() for c in (old_csv or "").split(",") if c.strip())
-    if new_cat: s.add(new_cat.strip())
+    if new_cat:
+        s.add(new_cat.strip())
     return ",".join(sorted(s)) if s else ""
 
 

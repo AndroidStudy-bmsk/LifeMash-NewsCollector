@@ -1,6 +1,9 @@
 from __future__ import annotations
-import time, requests
+
+import requests
+import time
 from typing import List, Dict, Optional
+
 from .constants import NEWSAPI_CATEGORIES
 from .utils import make_id, norm_time
 
@@ -19,10 +22,12 @@ def fetch_top_headlines_category(api_key: str, category: str, country: str = "us
         r.raise_for_status()
         data = r.json()
         if data.get("status") != "ok":
-            if debug: print(f"[NewsAPI error] top-headlines {category} p{page}: {data.get('message')}")
+            if debug:
+                print(f"[NewsAPI error] top-headlines {category} p{page}: {data.get('message')}")
             break
         arts = data.get("articles", []) or []
-        if debug: print(f"[NewsAPI] top-headlines {category} p{page} -> {len(arts)}")
+        if debug:
+            print(f"[NewsAPI] top-headlines {category} p{page} -> {len(arts)}")
         for a in arts:
             title, link = a.get("title"), a.get("url")
             items.append({
@@ -35,7 +40,8 @@ def fetch_top_headlines_category(api_key: str, category: str, country: str = "us
                 "category": category,
                 "raw": a,
             })
-        if len(arts) < page_size: break
+        if len(arts) < page_size:
+            break
         page += 1
         time.sleep(0.2)
     return items
@@ -51,21 +57,26 @@ def fetch_everything_by_domains(api_key: str, *, domains_csv: str, language: str
     while page <= max_pages:
         params = {"apiKey": api_key, "language": language, "domains": domains_csv,
                   "pageSize": page_size, "page": page}
-        if extra_params: params.update(extra_params)
+        if extra_params:
+            params.update(extra_params)
         try:
             r = sess.get(url, params=params, timeout=20)
             r.raise_for_status()
         except requests.HTTPError as e:
             code = getattr(e.response, "status_code", None)
-            if debug: print(f"[HTTPError] everything {language} p{page} code={code} msg={e}")
-            if code in (401, 426, 429): break
+            if debug:
+                print(f"[HTTPError] everything {language} p{page} code={code} msg={e}")
+            if code in (401, 426, 429):
+                break
             raise
         data = r.json()
         if data.get("status") != "ok":
-            if debug: print(f"[NewsAPI error] everything {language} p{page}: {data.get('message')}")
+            if debug:
+                print(f"[NewsAPI error] everything {language} p{page}: {data.get('message')}")
             break
         arts = data.get("articles", []) or []
-        if debug: print(f"[NewsAPI] everything {language} p{page} -> {len(arts)}")
+        if debug:
+            print(f"[NewsAPI] everything {language} p{page} -> {len(arts)}")
         for a in arts:
             title, link = a.get("title"), a.get("url")
             items.append({
@@ -77,7 +88,8 @@ def fetch_everything_by_domains(api_key: str, *, domains_csv: str, language: str
                 "summary": (a.get("description") or "")[:2000],
                 "raw": a,
             })
-        if len(arts) < page_size: break
+        if len(arts) < page_size:
+            break
         page += 1
         time.sleep(0.2)
     return items

@@ -1,8 +1,12 @@
 from __future__ import annotations
-import os, json, argparse
+
+import argparse
+import json
+import os
 from typing import List
-from .constants import NEWSAPI_CATEGORIES
-from .collector import collect_categories, collect_categories_domains_mode
+
+from news_collector.collector import collect_categories_domains_mode, collect_categories
+from news_collector.constants import NEWSAPI_CATEGORIES
 
 
 def parse_args() -> argparse.Namespace:
@@ -23,9 +27,11 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     invalid = [c for c in args.categories if c not in NEWSAPI_CATEGORIES]
-    if invalid: raise ValueError(f"invalid category: {', '.join(invalid)}")
+    if invalid:
+        raise ValueError(f"invalid category: {', '.join(invalid)}")
     api_key = os.getenv("NEWSAPI_KEY")
-    if not api_key: raise ValueError("NEWSAPI_KEY environment variable not set")
+    if not api_key:
+        raise ValueError("NEWSAPI_KEY environment variable not set")
     if args.domains_file:
         langs: List[str] = [s.strip() for s in args.languages.split(",") if s.strip()]
         result = collect_categories_domains_mode(

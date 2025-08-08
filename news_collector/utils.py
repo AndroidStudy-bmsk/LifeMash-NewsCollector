@@ -12,10 +12,12 @@ def make_id(title: Optional[str], url: Optional[str]) -> str:
 
 
 def norm_time(dt_str: Optional[str]) -> Optional[str]:
-    if not dt_str: return None
+    if not dt_str:
+        return None
     try:
         d = dtparse.parse(dt_str)
-        if not d.tzinfo: d = d.replace(tzinfo=tz.UTC)
+        if not d.tzinfo:
+            d = d.replace(tzinfo=tz.UTC)
         return d.astimezone(tz.UTC).isoformat()
     except Exception:
         return None
